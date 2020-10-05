@@ -1,0 +1,7 @@
+import { CoffeesController } from './coffees.controller';
+import { Module } from '@nestjs/common';
+
+@Module({
+    
+})
+export class CoffeesModule {}
