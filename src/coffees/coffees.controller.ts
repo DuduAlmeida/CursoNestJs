@@ -1,3 +1,4 @@
+import { CoffeesService } from './coffees.service';
 import {
     Body,
     Controller,
@@ -6,14 +7,19 @@ import {
     Param,
     Patch,
     Post,
+    Query,
   } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
 
+    constructor(private readonly coffeesService: CoffeesService){}
+
     @Get()
-    findAll() {
-        return 'This action returns all coffees';
+    findAll(@Query() paginationQuery) {
+        const {limit, offset} = paginationQuery;
+
+        return `This action returns all coffees => Limit: ${limit},\tOffset: ${offset}`;
     }
 
     @Get(':id')
